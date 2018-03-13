@@ -1,0 +1,31 @@
+/* contract "One.sol"  */
+
+pragma solidity ^0.4.0;
+contract One
+{
+    uint256 n;
+    function One() public
+    {
+        n=10;
+    }
+    function show() view public returns(uint256)
+    {
+        return n;
+    }
+}
+
+/* Contract "Two.sol"   */
+
+pragma solidity ^0.4.18;
+import "./One.sol";
+
+contract Two
+{
+    //oneAddress will be the contract address of "One.sol"
+    //it returns 10
+    function b(address oneAddress)public view returns(uint256)
+    {
+        uint256 ans=One(oneAddress).show();
+        return ans;
+    }
+}
